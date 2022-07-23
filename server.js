@@ -1,17 +1,18 @@
-const express = require('express')
-
-// // CONFIGURATION
-// require('dotenv').config()
-// const PORT = process.env.PORT
-// console.log(PORT)
-
-// DEPENDENCIES
-// const express = require('express')
-
 // CONFIGURATION
 require('dotenv').config()
 const PORT = process.env.PORT
+
+
+// DEPENDENCIES
+const express = require('express')
+
 const app = express()
+
+// MIDDLEWARE
+app.set('views', __dirname + '/views')
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
+
 
 // ROUTES
 app.get('/', (req, res) => {
