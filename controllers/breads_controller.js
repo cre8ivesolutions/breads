@@ -8,12 +8,19 @@ breads.get('/', (req, res) => {
 
 module.exports = breads
 
-// ROUTES
-app.get('/', (req, res) => {
-    res.send('Welcome to an Awesome App about Breads')
+const express = require('express')
+const breads = express.Router()
+const Bread = require('../models/bread.js')
+
+// INDEX
+breads.get('/', (req, res) => {
+  res.send(Bread)
+})
+
+// SHOW
+breads.get('/:arrayIndex', (req, res) => {
+    res.send(Bread[req.params.arrayIndex])
   })
   
-  // Breads
-  const breadsController = require('./controllers/breads_controller.js')
-  app.use('/breads', breadsController)
-  
+
+module.exports = breads
