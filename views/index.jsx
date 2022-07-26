@@ -5,7 +5,7 @@ function Index ({breads})  {
     return (
       <Default>
   <h2>Index Page</h2>
-  {/* <p>I have {breads[0].name} bread!</p> */}
+  {/*<p>I have {breads[0].name} bread!</p>*/}
   {/* This is a JSX comment. */}
   <ul>
   {
@@ -19,10 +19,6 @@ function Index ({breads})  {
     )
   })
 }
-
-
-
-
   </ul>
 </Default>
 
