@@ -1,6 +1,7 @@
 const React = require('react')
 const Default = require('./layouts/Default')
 
+
 function Index ({breads, title})  {
     return (
       <Default title={title}>
@@ -13,7 +14,7 @@ function Index ({breads, title})  {
   breads.map((bread, index)=> {
     return (
       <li key={index}>
-        <a href={`/breads/${index}`}>
+        <a href={`/breads/${bread.id}`}>
           {bread.name}
         </a>
       </li>
