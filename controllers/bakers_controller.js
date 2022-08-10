@@ -9,6 +9,5 @@ baker.get('/data/seed', (req, res) => {
         .then(res.redirect('/breads'))
 })
 
-
 // export
 module.exports = baker                    

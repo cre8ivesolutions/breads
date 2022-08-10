@@ -17,13 +17,17 @@ breads.get('/new', (req, res) => {
 
 // INDEX
 breads.get('/', (req, res) => {
-  Bread.find()
-  .then(foundBreads => {
-          res.render('Index', {
-            breads: foundBreads,
-            title: 'Index Page'
+  Baker.find()
+    .then(foundBakers => {
+      Bread.find()
+      .then(foundBreads => {
+          res.render('index', {
+              breads: foundBreads,
+              bakers: foundBakers,
+              title: 'Index Page'
           })
-        })
+      })
+    })
 })
 
 // NEW
@@ -34,24 +38,33 @@ breads.get('/new', (req, res) => {
 // SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
+      .populate('baker')
       .then(foundBread => {
-        const bakedBy = foundBread.getBakedBy() 
-        console.log(bakedBy)
         res.render('show', {
             bread: foundBread
         })
       })
-    })
+      .catch(err => {
+        res.send('404')
+      })
+})
+
 
 // EDIT
+// EDIT
 breads.get('/:id/edit', (req, res) => {
-  Bread.findById(req.params.id) 
-  .then(foundBread => { 
-    res.render('edit', {
-      bread: foundBread 
+  Baker.find()
+    .then(foundBakers => {
+        Bread.findById(req.params.id)
+          .then(foundBread => {
+            res.render('edit', {
+                bread: foundBread, 
+                bakers: foundBakers 
+            })
+          })
     })
-  })
 })
+
 
 // UPDATE
 breads.put('/:id', (req, res) => {
@@ -61,16 +74,16 @@ breads.put('/:id', (req, res) => {
     req.body.hasGluten = false
   }
   Bread.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
-  .then(updatedBread => {
-    console.log(updatedBread) 
-    res.redirect(`/breads/${req.params.id}`) 
-  })
+    .then(updatedBread => {
+      console.log(updatedBread) 
+      res.redirect(`/breads/${req.params.id}`) 
+    })
 })
 
 //CREATE
 breads.post('/', (req, res) => {
-  if (!req.body.image) {
-    req.body.image = undefined
+  if(!req.body.image) {
+      req.body.image = undefined 
   }
   if(req.body.hasGluten === 'on') {
     req.body.hasGluten = true
