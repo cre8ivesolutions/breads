@@ -9,17 +9,16 @@ function Show ({bread,index}) {
           and it
           {
             bread.hasGluten
-            ? <span> does </span>
-            : <span> does NOT </span>
+            ? <span> has </span>
+            : <span> does NOT have </span>
           }
-          have gluten.
+          gluten.
         </p>
         <img src={bread.image} alt={bread.name} />
-        <a href={`/breads/${index}/edit`}><button>Edit</button></a>
-        <form action={`/breads/${index}?_method=DELETE`} method="POST">
+        <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
+        <form action={`/breads/${bread.id}?_method=DELETE`} method="POST">
           <input type='submit' value="DELETE"/>
         </form>
-
         <li><a href="/breads">Go home</a></li>
       </Default>
     )
