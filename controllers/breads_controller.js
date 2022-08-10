@@ -23,15 +23,14 @@ breads.get('/new', (req, res) => {
 // SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
-  .then(foundBread => {
-    res.render('show', {
-      bread: foundBread
+      .then(foundBread => {
+        const bakedBy = foundBread.getBakedBy() 
+        console.log(bakedBy)
+        res.render('show', {
+            bread: foundBread
+        })
+      })
     })
-  })
-  .catch(err => {
-    res.send('404')
-  })
-})
 
 // EDIT
 breads.get('/:id/edit', (req, res) => {
@@ -70,6 +69,7 @@ breads.post('/', (req, res) => {
   Bread.create(req.body)
   res.redirect('/breads')
 })
+
 // DELETE
 breads.delete('/:id', (req, res) => {
   Bread.findByIdAndDelete(req.params.id) 
@@ -78,12 +78,14 @@ breads.delete('/:id', (req, res) => {
     })
   })
   
-  breads.get('/data/seed', (req, res) => {
+  breads.get('breads/data/seed', (req, res) => {
     Bread.insertMany(seedInfo)
         .then(createdBreads => {
           res.redirect('/breads')
         })
   })
+
+  // data/seed is not working
 
   module.exports = breads
   

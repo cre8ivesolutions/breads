@@ -7,4 +7,7 @@ body {
     display: block;
     margin: auto;
   }
+  p, h3 {
+    text-align: center;
+  }
   
