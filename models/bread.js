@@ -1,10 +1,7 @@
-
 // require mongoose 
 const mongoose = require('mongoose')
 // creating shorthand for the Schema constructor 
 const { Schema } = mongoose 
-
-
 // schema
 const breadSchema = new Schema({
   name: { type: String, required: true },
@@ -19,7 +16,6 @@ const breadSchema = new Schema({
 breadSchema.methods.getBakedBy = function(){
   return `${this.name} was baked with love by ${this.baker.name}, who has been with us since ${this.baker.startDate.getFullYear()}`
 }
-
 // The below code is a bonus I was trying to do but it is not working. I ran out of time but I may come back to it.
 // breadSchema.methods.bakersFave = function(){
 //   return `${this.baker}'s favorite bread is ${that.name}`

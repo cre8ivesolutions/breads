@@ -4,8 +4,6 @@ const Bread = require('../models/bread.js')
 // const seedData = require('../models/seedData.js')
 // somewhere at the top with the other dependencies 
 const Baker = require('../models/baker.js')
-
-
 // Index:
 breads.get('/', (req, res) => {
   Baker.find()
@@ -20,9 +18,6 @@ breads.get('/', (req, res) => {
       })
     })
 })
-
-
-
 // NEW
 breads.get('/new', (req, res) => {
     Baker.find()
@@ -99,7 +94,7 @@ breads.delete('/:id', (req, res) => {
       res.status(303).redirect('/breads')
     })
   })
-  
+
   // breads.get('breads/data/seed', (req, res) => {
   //   Bread.insertMany(seedInfo)
   //       .then(createdBreads => {
@@ -108,6 +103,5 @@ breads.delete('/:id', (req, res) => {
   // })
 
   // data/seed is not working
-
   module.exports = breads
   
