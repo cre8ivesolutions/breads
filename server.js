@@ -25,7 +25,8 @@ app.engine('jsx', require('express-react-views').createEngine())
 
 // ROUTES
 app.get('/', (req, res) => {
-  res.send('Welcome to an Awesome App About BREADS!')
+  // res.send('Welcome to an Awesome App About BREADS!')
+  res.redirect ('/breads')
 })
  
 // breads
@@ -41,6 +42,7 @@ app.get('*', (req, res) => {
   res.send('404')
 })
 
-
 // LISTEN
-app.listen(process.env.PORT)
+app.listen(PORT, () => {
+  console.log('I can hear on the port!', PORT);
+})
