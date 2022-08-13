@@ -13,7 +13,6 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true}, () => { 
     console.log('connected to mongo: ', process.env.MONGO_URI) 
   })
-
 // MIDDLEWARE
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended: true}))
@@ -21,26 +20,20 @@ app.use(express.static('public'))
 // app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
-
-
 // ROUTES
 app.get('/', (req, res) => {
   res.send('Welcome to an Awesome App About BREADS!')
 })
- 
 // breads
 const breadsController = require('./controllers/breads_controller.js')
 app.use('/breads', breadsController)
-
 // bakers 
 const bakersController = require('./controllers/bakers_controller.js')
 app.use('/bakers', bakersController)
-
 // 404 Page
 app.get('*', (req, res) => {
   res.send('404')
 })
-
 // LISTEN
 app.listen(PORT, () => {
   console.log('I can hear on the port!', PORT);
