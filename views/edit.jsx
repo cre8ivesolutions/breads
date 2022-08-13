@@ -1,7 +1,7 @@
 const React = require('react')
 const Default = require('./layouts/default')
 
-function Edit ({bread, index}) {
+function Edit ({bread, bakers}) {
   return (
     <Default>
       <h2>Edit a bread</h2>
@@ -29,14 +29,6 @@ function Edit ({bread, index}) {
               )
             })}
           </select>
-          {/* <select name="baker" id="baker" defaultValue={bread.baker}>
-            <option value="Rachel">Rachel</option>
-            <option value="Monica">Monica</option>
-            <option value="Joey">Joey</option>
-            <option value="Chandler">Chandler</option>
-            <option value="Ross">Ross</option>
-            <option value="Phoebe">Phoebe</option>
-          </select> */}
         <label htmlFor="hasGluten">Has Gluten?</label>
         <input
           type="checkbox"

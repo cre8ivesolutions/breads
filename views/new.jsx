@@ -1,7 +1,7 @@
 const React = require('react')
 const Default = require('./layouts/default')
 
-function New (bakers) {
+function New ({bakers}) {
     return (
       <Default>
         <h2>Add a new bread</h2>

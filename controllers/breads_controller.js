@@ -5,17 +5,8 @@ const Bread = require('../models/bread.js')
 // somewhere at the top with the other dependencies 
 const Baker = require('../models/baker.js')
 
-// in the new route
-breads.get('/new', (req, res) => {
-    Baker.find()
-        .then(foundBakers => {
-            res.render('new', {
-                bakers: foundBakers
-            })
-      })
-})
 
-// INDEX
+// Index:
 breads.get('/', (req, res) => {
   Baker.find()
     .then(foundBakers => {
@@ -30,11 +21,17 @@ breads.get('/', (req, res) => {
     })
 })
 
+
+
 // NEW
 breads.get('/new', (req, res) => {
-  res.render('new')
+    Baker.find()
+        .then(foundBakers => {
+            res.render('new', {
+                bakers: foundBakers
+            })
+      })
 })
-
 // SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
@@ -48,6 +45,7 @@ breads.get('/:id', (req, res) => {
         res.send('404')
       })
 })
+
 
 
 // EDIT

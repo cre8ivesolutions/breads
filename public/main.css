@@ -1,5 +1,6 @@
 body {
     background-color: floralwhite;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   img {
@@ -10,4 +11,11 @@ body {
   p, h3 {
     text-align: center;
   }
-  
+  .baker {
+    /* text-shadow: 1em burlywood; */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  .bio {
+    text-align: center;
+    text-transform: uppercase;
+  }
