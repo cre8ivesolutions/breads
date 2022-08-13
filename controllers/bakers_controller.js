@@ -1,31 +1,31 @@
+// dependencies
 const express = require('express')
 const baker = express.Router()
 const Baker = require('../models/baker.js')
 const bakerSeedData = require('../models/baker_seed.js')
 
-// index 
+// Index: 
 baker.get('/', (req, res) => {
     Baker.find()
-        .populate('breads')
+    .populate('breads')
         .then(foundBakers => {
             res.send(foundBakers)
         })
-})
-
-// show 
+})     
+// Show
 baker.get('/:id', (req, res) => {
     Baker.findById(req.params.id)
-        .populate({
-            path: 'breads',
-            options: { limit: 3 }
+    .populate({
+        path: 'breads',
+        options: { limit: 3 }
+    })
+    .lean()
+    .then(foundBaker => {
+        res.render('bakerShow', {
+            baker: foundBaker
         })
-        .lean()
-        .then(foundBaker => {
-            res.render('bakerShow', {
-                baker: foundBaker
-            })
-        })
-})
+    })
+})             
 
 // delete
 baker.delete('/:id', (req, res) => {
@@ -39,5 +39,5 @@ baker.get('/data/seed', (req, res) => {
     Baker.insertMany(bakerSeedData)
         .then(res.redirect('/breads'))
 })
-
-module.exports = baker
+// export
+module.exports = baker                    

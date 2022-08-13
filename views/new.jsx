@@ -26,14 +26,7 @@ function New ({bakers}) {
                     <option value={baker.id} key={baker.id}>{baker.name}</option>
                 )
             })}
-        </select>
-          {/* //   <option value="Rachel">Rachel</option>
-          //   <option value="Monica">Monica</option>
-          //   <option value="Joey">Joey</option>
-          //   <option value="Chandler">Chandler</option>
-          //   <option value="Ross">Ross</option>
-          //   <option value="Phoebe">Phoebe</option>
-          // </select> */}
+          </select>
           <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             type="checkbox"
